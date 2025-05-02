@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,6 +7,7 @@ import { Car, User, MapPin, Clock } from "lucide-react";
 import TripCard from "@/components/TripCard";
 import PassengerRequestCard from "@/components/PassengerRequestCard";
 import DriverDetailCard from "@/components/DriverDetailCard";
+import BottomNav from "@/components/BottomNav";
 
 // Mock data for demonstration
 const mockDriverData = {
@@ -110,7 +110,7 @@ const Dashboard = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 p-4">
+    <div className="min-h-screen bg-gray-50 pb-16 p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header with toggle button (for demo purposes) */}
         <div className="flex justify-between items-center mb-8">
@@ -327,6 +327,7 @@ const Dashboard = () => {
           </div>
         )}
       </div>
+      <BottomNav />
     </div>
   );
 };

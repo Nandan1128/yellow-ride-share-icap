@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/components/ui/use-toast";
 import PassengerForm from "@/components/PassengerForm";
 import LocationInput from "@/components/LocationInput";
+import BottomNav from "@/components/BottomNav";
 
 const CreatePassengerTrip = () => {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ const CreatePassengerTrip = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white p-4">
+    <div className="min-h-screen bg-white pb-16 p-4">
       <div className="container mx-auto max-w-2xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-icap-black">Create Passenger Trip</h1>
@@ -40,6 +41,7 @@ const CreatePassengerTrip = () => {
           </CardContent>
         </Card>
       </div>
+      <BottomNav />
     </div>
   );
 };

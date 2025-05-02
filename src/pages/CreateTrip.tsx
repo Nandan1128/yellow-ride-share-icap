@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -7,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { X, MapPin, Clock } from "lucide-react";
+import BottomNav from "@/components/BottomNav";
 
 const CreateTrip = () => {
   const navigate = useNavigate();
@@ -79,7 +79,7 @@ const CreateTrip = () => {
   };
 
   return (
-    <div className="min-h-screen bg-white p-4">
+    <div className="min-h-screen bg-white pb-16 p-4">
       <div className="container mx-auto max-w-2xl">
         <div className="mb-8 text-center">
           <h1 className="text-3xl font-bold text-icap-black">Create Trip</h1>
@@ -366,6 +366,7 @@ const CreateTrip = () => {
           </CardContent>
         </Card>
       </div>
+      <BottomNav />
     </div>
   );
 };
