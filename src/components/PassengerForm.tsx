@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/components/ui/use-toast";
 import { Slider } from "@/components/ui/slider";
+import LocationInput from "./LocationInput";
 
 type PassengerFormProps = {
   onSubmit: () => void;
@@ -58,27 +59,21 @@ const PassengerForm = ({ onSubmit }: PassengerFormProps) => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      <div className="space-y-2">
-        <label htmlFor="pickUp" className="icap-label">Pick Up Location</label>
-        <Input
-          id="pickUp"
-          value={formData.pickUp}
-          onChange={(e) => handleInputChange("pickUp", e.target.value)}
-          className="icap-input"
-          placeholder="Enter pick up location"
-        />
-      </div>
+      <LocationInput
+        id="pickUp"
+        label="Pick Up Location"
+        value={formData.pickUp}
+        onChange={(value) => handleInputChange("pickUp", value)}
+        isPickup={true}
+      />
 
-      <div className="space-y-2">
-        <label htmlFor="dropPoint" className="icap-label">Drop Location</label>
-        <Input
-          id="dropPoint"
-          value={formData.dropPoint}
-          onChange={(e) => handleInputChange("dropPoint", e.target.value)}
-          className="icap-input"
-          placeholder="Enter drop location"
-        />
-      </div>
+      <LocationInput
+        id="dropPoint"
+        label="Drop Location"
+        value={formData.dropPoint}
+        onChange={(value) => handleInputChange("dropPoint", value)}
+        isPickup={false}
+      />
 
       <div className="space-y-2">
         <label htmlFor="passengers" className="icap-label">Number of Passengers</label>

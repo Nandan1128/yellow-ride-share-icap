@@ -10,6 +10,7 @@ import OtpVerification from "./pages/OtpVerification";
 import ProfileSetup from "./pages/ProfileSetup";
 import Dashboard from "./pages/Dashboard";
 import CreateTrip from "./pages/CreateTrip";
+import CreatePassengerTrip from "./pages/CreatePassengerTrip";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/profile-setup" element={<ProfileSetup />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/create-trip" element={<CreateTrip />} />
+          <Route path="/create-passenger-trip" element={<CreatePassengerTrip />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
