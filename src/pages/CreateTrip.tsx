@@ -133,13 +133,13 @@ const CreateTrip = () => {
               </div>
 
               <div className="space-y-2">
-                <label htmlFor="vehicleModel" className="icap-label">Vehicle Model</label>
+                <label htmlFor="vehicleModel" className="icap-label">Vehicle Name / Model</label>
                 <Input
                   id="vehicleModel"
                   value={formData.vehicleModel}
                   onChange={(e) => handleInputChange("vehicleModel", e.target.value)}
                   className="icap-input"
-                  placeholder="Enter your vehicle model"
+                  placeholder="Enter your vehicle name/ model"
                 />
               </div>
 

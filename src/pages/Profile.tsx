@@ -8,6 +8,7 @@ import { ChevronRight, Edit, Shield, Camera, Mail, Phone, MapPin, User, Briefcas
 import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 
+
 const Profile = () => {
   const isMobile = useIsMobile();
   
@@ -169,7 +170,7 @@ const Profile = () => {
         </Card>
       </div>
       
-      {isMobile && <BottomNav />}
+      <BottomNav />
     </div>
   );
 };
