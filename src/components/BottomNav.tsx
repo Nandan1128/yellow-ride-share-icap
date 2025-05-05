@@ -8,9 +8,9 @@ const BottomNav = () => {
   
   const navItems = [
     { name: "Dashboard", icon: LayoutDashboard, path: "/dashboard" },
-    { name: "Profile", icon: UserRound, path: "/profile" },
     { name: "Publish", icon: Upload, path: "/publish" },
-    { name: "My Booking", icon: FileText, path: "/my-booking" }
+    { name: "My Booking", icon: FileText, path: "/my-booking" },
+    { name: "Profile", icon: UserRound, path: "/profile" }
   ];
 
   const handleNavigation = (path: string) => {
