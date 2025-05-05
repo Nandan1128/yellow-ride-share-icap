@@ -39,6 +39,11 @@ const Index = () => {
     }
   };
 
+  const handleSignUpClick = () => {
+    // Directly navigate to registration page instead of just toggling state
+    navigate("/register", { state: { email, password } });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-white p-4">
       <div className="w-full max-w-md animate-fade-in">
@@ -104,7 +109,7 @@ const Index = () => {
                     Don't have an account?{" "}
                     <button
                       type="button"
-                      onClick={() => setIsLogin(false)}
+                      onClick={handleSignUpClick}
                       className="text-icap-yellow-dark hover:underline font-semibold"
                     >
                       Sign Up
