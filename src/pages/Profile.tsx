@@ -6,8 +6,11 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Separator } from "@/components/ui/separator";
 import { ChevronRight, Edit, Shield, Camera, Mail, Phone, MapPin, User, Briefcase, Star, Heart, Award } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const Profile = () => {
+  const isMobile = useIsMobile();
+  
   // Mock user data
   const user = {
     name: "Nandan",
@@ -23,10 +26,10 @@ const Profile = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
+    <div className="min-h-screen bg-gray-50 pb-20 lg:pb-0">
       {/* Header with background color */}
       <div className="bg-icap-yellow pt-10 pb-20 px-4 rounded-b-3xl">
-        <div className="max-w-md mx-auto flex justify-between items-start">
+        <div className={`mx-auto flex justify-between items-start ${isMobile ? 'max-w-md' : 'max-w-5xl'}`}>
           <h1 className="text-2xl font-bold text-black">Profile</h1>
           <Button variant="ghost" className="p-1 h-auto" onClick={() => {}}>
             <Edit className="h-5 w-5 text-black" />
@@ -34,12 +37,12 @@ const Profile = () => {
         </div>
       </div>
 
-      <div className="max-w-md mx-auto px-4">
+      <div className={`mx-auto px-4 ${isMobile ? 'max-w-md' : 'max-w-5xl'}`}>
         {/* Profile Card - Overlapping the yellow header */}
-        <Card className="rounded-xl shadow-lg -mt-16 overflow-hidden border-none">
+        <Card className={`rounded-xl shadow-lg -mt-16 overflow-hidden border-none ${!isMobile && 'flex'}`}>
           {/* Profile Info */}
-          <div className="p-6 flex flex-col items-center text-center">
-            <div className="relative mb-3">
+          <div className={`p-6 ${isMobile ? 'flex flex-col items-center text-center' : 'flex-1 max-w-xs border-r'}`}>
+            <div className={`relative mb-3 ${!isMobile && 'mx-auto text-center'}`}>
               <Avatar className="h-24 w-24 border-4 border-white">
                 <AvatarFallback className="text-2xl bg-icap-yellow text-black">
                   {user.name.charAt(0)}
@@ -54,7 +57,7 @@ const Profile = () => {
             <h2 className="text-xl font-bold text-gray-800">{user.name}</h2>
             <p className="text-gray-600 mb-2">{user.title}</p>
             
-            <div className="flex items-center text-sm text-gray-500 mb-4">
+            <div className="flex items-center text-sm text-gray-500 mb-4 justify-center">
               <MapPin className="h-4 w-4 mr-1" />
               {user.location}
             </div>
@@ -76,97 +79,97 @@ const Profile = () => {
             </div>
           </div>
 
-          <Separator />
-
-          {/* Contact Information */}
-          <div className="p-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Contact Information</h3>
-            
-            <div className="space-y-4">
-              <div className="flex items-center">
-                <div className="bg-gray-100 rounded-full p-2 mr-3">
-                  <Phone className="h-5 w-5 text-gray-600" />
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500">Phone</p>
-                  <p className="text-gray-800">{user.phone}</p>
-                </div>
-                {user.isPhoneVerified && (
-                  <Shield className="ml-auto h-5 w-5 text-green-500" />
-                )}
-              </div>
+          <div className={`${isMobile ? '' : 'flex-[2]'}`}>
+            {/* Contact Information */}
+            <div className="p-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Contact Information</h3>
               
-              <div className="flex items-center">
-                <div className="bg-gray-100 rounded-full p-2 mr-3">
-                  <Mail className="h-5 w-5 text-gray-600" />
+              <div className="space-y-4">
+                <div className="flex items-center">
+                  <div className="bg-gray-100 rounded-full p-2 mr-3">
+                    <Phone className="h-5 w-5 text-gray-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Phone</p>
+                    <p className="text-gray-800">{user.phone}</p>
+                  </div>
+                  {user.isPhoneVerified && (
+                    <Shield className="ml-auto h-5 w-5 text-green-500" />
+                  )}
                 </div>
-                <div>
-                  <p className="text-sm text-gray-500">Email</p>
-                  <p className="text-gray-800">{user.email}</p>
+                
+                <div className="flex items-center">
+                  <div className="bg-gray-100 rounded-full p-2 mr-3">
+                    <Mail className="h-5 w-5 text-gray-600" />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-500">Email</p>
+                    <p className="text-gray-800">{user.email}</p>
+                  </div>
+                  {user.isEmailVerified ? (
+                    <Shield className="ml-auto h-5 w-5 text-green-500" />
+                  ) : (
+                    <Button variant="outline" size="sm" className="ml-auto text-xs border-icap-yellow text-black hover:bg-icap-yellow">
+                      Verify
+                    </Button>
+                  )}
                 </div>
-                {user.isEmailVerified ? (
-                  <Shield className="ml-auto h-5 w-5 text-green-500" />
-                ) : (
-                  <Button variant="outline" size="sm" className="ml-auto text-xs border-icap-yellow text-black hover:bg-icap-yellow">
-                    Verify
-                  </Button>
-                )}
               </div>
             </div>
-          </div>
 
-          <Separator />
+            <Separator />
 
-          {/* Personal Information */}
-          <div className="p-6">
-            <h3 className="text-lg font-semibold text-gray-800 mb-4">Personal Information</h3>
-            
-            <div className="space-y-4">
-              <button className="flex items-center justify-between w-full">
-                <div className="flex items-center">
-                  <div className="bg-gray-100 rounded-full p-2 mr-3">
-                    <User className="h-5 w-5 text-gray-600" />
-                  </div>
-                  <span className="text-gray-800">About Me</span>
-                </div>
-                <ChevronRight className="h-5 w-5 text-gray-400" />
-              </button>
+            {/* Personal Information */}
+            <div className="p-6">
+              <h3 className="text-lg font-semibold text-gray-800 mb-4">Personal Information</h3>
               
-              <button className="flex items-center justify-between w-full">
-                <div className="flex items-center">
-                  <div className="bg-gray-100 rounded-full p-2 mr-3">
-                    <Briefcase className="h-5 w-5 text-gray-600" />
+              <div className={`${!isMobile && 'grid grid-cols-2 gap-4'}`}>
+                <button className="flex items-center justify-between w-full p-2 rounded-lg hover:bg-gray-50">
+                  <div className="flex items-center">
+                    <div className="bg-gray-100 rounded-full p-2 mr-3">
+                      <User className="h-5 w-5 text-gray-600" />
+                    </div>
+                    <span className="text-gray-800">About Me</span>
                   </div>
-                  <span className="text-gray-800">Work</span>
-                </div>
-                <ChevronRight className="h-5 w-5 text-gray-400" />
-              </button>
-              
-              <button className="flex items-center justify-between w-full">
-                <div className="flex items-center">
-                  <div className="bg-gray-100 rounded-full p-2 mr-3">
-                    <Award className="h-5 w-5 text-gray-600" />
+                  <ChevronRight className="h-5 w-5 text-gray-400" />
+                </button>
+                
+                <button className="flex items-center justify-between w-full p-2 rounded-lg hover:bg-gray-50">
+                  <div className="flex items-center">
+                    <div className="bg-gray-100 rounded-full p-2 mr-3">
+                      <Briefcase className="h-5 w-5 text-gray-600" />
+                    </div>
+                    <span className="text-gray-800">Work</span>
                   </div>
-                  <span className="text-gray-800">Achievements</span>
-                </div>
-                <ChevronRight className="h-5 w-5 text-gray-400" />
-              </button>
-              
-              <button className="flex items-center justify-between w-full">
-                <div className="flex items-center">
-                  <div className="bg-gray-100 rounded-full p-2 mr-3">
-                    <Star className="h-5 w-5 text-gray-600" />
+                  <ChevronRight className="h-5 w-5 text-gray-400" />
+                </button>
+                
+                <button className="flex items-center justify-between w-full p-2 rounded-lg hover:bg-gray-50">
+                  <div className="flex items-center">
+                    <div className="bg-gray-100 rounded-full p-2 mr-3">
+                      <Award className="h-5 w-5 text-gray-600" />
+                    </div>
+                    <span className="text-gray-800">Achievements</span>
                   </div>
-                  <span className="text-gray-800">Interests</span>
-                </div>
-                <ChevronRight className="h-5 w-5 text-gray-400" />
-              </button>
+                  <ChevronRight className="h-5 w-5 text-gray-400" />
+                </button>
+                
+                <button className="flex items-center justify-between w-full p-2 rounded-lg hover:bg-gray-50">
+                  <div className="flex items-center">
+                    <div className="bg-gray-100 rounded-full p-2 mr-3">
+                      <Star className="h-5 w-5 text-gray-600" />
+                    </div>
+                    <span className="text-gray-800">Interests</span>
+                  </div>
+                  <ChevronRight className="h-5 w-5 text-gray-400" />
+                </button>
+              </div>
             </div>
           </div>
         </Card>
       </div>
       
-      <BottomNav />
+      {isMobile && <BottomNav />}
     </div>
   );
 };
