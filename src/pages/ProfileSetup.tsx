@@ -19,6 +19,16 @@ const ProfileSetup = () => {
     state: ""
   });
 
+  // List of Indian states for the dropdown
+  const indianStates = [
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", 
+    "Gujarat", "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", 
+    "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", 
+    "Odisha", "Punjab", "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", 
+    "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi", "Jammu and Kashmir", 
+    "Ladakh", "Puducherry", "Chandigarh"
+  ];
+
   const handleBasicProfileChange = (field: string, value: string) => {
     setBasicProfile(prev => ({
       ...prev,
@@ -51,7 +61,7 @@ const ProfileSetup = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white p-4">
+    <div className="min-h-screen flex items-center justify-center bg-gray-50 p-4">
       <div className="w-full max-w-2xl animate-fade-in">
         <div className="mb-10 text-center">
           <h1 className="text-4xl font-bold text-icap-black mb-2">ICAP</h1>
@@ -60,11 +70,11 @@ const ProfileSetup = () => {
 
         <Card className="border-none shadow-lg">
           <CardHeader className="bg-icap-yellow rounded-t-lg">
-            <CardTitle className="text-2xl font-bold text-center">
+            <CardTitle className="text-2xl font-bold text-center text-icap-black">
               Basic Information
             </CardTitle>
           </CardHeader>
-          <CardContent className="pt-6">
+          <CardContent className="pt-6 bg-white">
             <form onSubmit={handleBasicProfileSubmit} className="space-y-4">
               <div className="space-y-2">
                 <label htmlFor="fullName" className="icap-label">Full Name</label>
@@ -94,7 +104,7 @@ const ProfileSetup = () => {
                   value={basicProfile.gender} 
                   onValueChange={(value) => handleBasicProfileChange("gender", value)}
                 >
-                  <SelectTrigger className="icap-input">
+                  <SelectTrigger className="icap-input bg-white">
                     <SelectValue placeholder="Select your gender" />
                   </SelectTrigger>
                   <SelectContent>
@@ -118,13 +128,19 @@ const ProfileSetup = () => {
 
               <div className="space-y-2">
                 <label htmlFor="state" className="icap-label">State</label>
-                <Input
-                  id="state"
-                  value={basicProfile.state}
-                  onChange={(e) => handleBasicProfileChange("state", e.target.value)}
-                  className="icap-input"
-                  placeholder="Enter your state"
-                />
+                <Select 
+                  value={basicProfile.state} 
+                  onValueChange={(value) => handleBasicProfileChange("state", value)}
+                >
+                  <SelectTrigger className="icap-input bg-white">
+                    <SelectValue placeholder="Select your state" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-white max-h-[200px] overflow-y-auto">
+                    {indianStates.map((state) => (
+                      <SelectItem key={state} value={state.toLowerCase()}>{state}</SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
               </div>
 
               <Button 

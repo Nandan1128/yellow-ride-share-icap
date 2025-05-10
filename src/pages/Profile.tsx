@@ -40,7 +40,7 @@ const Profile = () => {
 
       <div className={`mx-auto px-4 ${isMobile ? 'max-w-md' : 'max-w-5xl'}`}>
         {/* Profile Card - Overlapping the yellow header */}
-        <Card className={`rounded-xl shadow-lg -mt-16 overflow-hidden border-none ${!isMobile && 'flex'}`}>
+        <Card className={`rounded-xl shadow-lg -mt-16 overflow-hidden border-none bg-white ${!isMobile && 'flex'}`}>
           {/* Profile Info */}
           <div className={`p-6 ${isMobile ? 'flex flex-col items-center text-center' : 'flex-1 max-w-xs border-r'}`}>
             <div className={`relative mb-3 ${!isMobile && 'mx-auto text-center'}`}>
@@ -80,7 +80,7 @@ const Profile = () => {
             </div>
           </div>
 
-          <div className={`${isMobile ? '' : 'flex-[2]'}`}>
+          <div className={`bg-white ${isMobile ? '' : 'flex-[2]'}`}>
             {/* Contact Information */}
             <div className="p-6">
               <h3 className="text-lg font-semibold text-gray-800 mb-4">Contact Information</h3>
