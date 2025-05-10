@@ -19,11 +19,11 @@ const Publish = () => {
         <div className="grid md:grid-cols-2 gap-4">
           <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
             <CardHeader className="bg-icap-yellow rounded-t-lg">
-              <CardTitle className="text-xl font-bold">
+              <CardTitle className="text-xl font-bold text-icap-black">
                 Driver Trip
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent className="pt-6 bg-white">
               <p className="mb-6 text-gray-600">Create a trip as a driver and let passengers join your ride</p>
               <Button 
                 onClick={() => navigate('/create-trip')} 
@@ -36,11 +36,11 @@ const Publish = () => {
 
           <Card className="border-none shadow-lg hover:shadow-xl transition-shadow">
             <CardHeader className="bg-icap-yellow rounded-t-lg">
-              <CardTitle className="text-xl font-bold">
+              <CardTitle className="text-xl font-bold text-icap-black">
                 Passenger Trip
               </CardTitle>
             </CardHeader>
-            <CardContent className="pt-6">
+            <CardContent className="pt-6 bg-white">
               <p className="mb-6 text-gray-600">Create a trip as a passenger and find drivers going your way</p>
               <Button 
                 onClick={() => navigate('/create-passenger-trip')} 
