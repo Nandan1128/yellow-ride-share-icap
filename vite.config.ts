@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "./", // Change from "/yellow-ride-share-icap/" to "./" for relative paths
+  base: "/", // Set base to root path for deployment to icap.lovable.app
   server: {
     host: "::",
     port: 8080,
