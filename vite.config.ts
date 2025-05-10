@@ -6,7 +6,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/yellow-ride-share-icap/", // Add the repository name here
+  base: "./", // Change from "/yellow-ride-share-icap/" to "./" for relative paths
   server: {
     host: "::",
     port: 8080,
